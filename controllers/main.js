@@ -1,5 +1,11 @@
+const users = require('../models/users').users
+
 exports.testGet = (req, res) => {
-  return res.send('Received a GET HTTP method!')
+  return res.send(users)
+}
+
+exports.testGetById = (req, res) => {
+  return res.send(users[req.params.userId])
 }
 
 exports.testPost = (req, res) => {

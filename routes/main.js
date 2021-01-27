@@ -5,6 +5,8 @@ const router = express.Router()
 
 router.get('/', controller.testGet)
 
+router.get('/:userId', controller.testGetById)
+
 router.post('/', controller.testPost)
 
 router.put('/:userId', controller.testPut)
