@@ -1,6 +1,8 @@
 require('dotenv').config()
 
 const express = require('express')
+const bodyParser = require('body-parser')
+const users = require('./models/users').users
 
 const app = express()
 
@@ -14,9 +16,16 @@ app.use(function (req, res, next) {
   next()
 })
 
-// app.use(bodyParser.json())
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: true }))
 
 app.use('/users', mainRoutes)
+
+app.use((req, res, next) => {
+  req.me = users[1]
+  next()
+})
+
 app.use('/messages', messageRoutes)
 
 app.listen(process.env.PORT, () => {

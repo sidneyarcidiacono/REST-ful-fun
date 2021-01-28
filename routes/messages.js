@@ -7,4 +7,8 @@ router.get('/', messageController.testGetMessages)
 
 router.get('/:messageId', messageController.testGetById)
 
+router.post('/', messageController.postMessage)
+
+router.delete('/:messageId', messageController.deleteMessage)
+
 module.exports = router
